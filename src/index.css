@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #ffffff;
+}
+/* Dark theme root override */
+.theme-dark body {
+  /* Matte black canvas with subtle silver text */
+  background: #0a0a0b;
+  color: #d6d9df;
+}
+
+/* Keep the rest of styling in components via Tailwind classes */
+
+/* Custom header to match requested design */
+.custom-header {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #123;
+  color: white;
+  min-height: 50vh;
+  padding: 0px;
+  position: static;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.custom-header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  gap: 20px;
+}
+
+.custom-header nav a {
+  color: #cfe3ff;
+  text-decoration: none;
+}
+
+.custom-header nav a:hover {
+  text-decoration: underline;
+}
+
+.custom-header img {
+  width: 64px;
+  height: 64px;
+  margin: 8px 0;
+}
+
+.custom-header h1 {
+  margin: 8px 0 4px 0;
+}
+
+.custom-header p {
+  margin: 0 0 8px 0;
+  color: #dbe7ff;
+}
+
+/* Page background and panel helpers */
+.page-bg {
+  background: #ffffff;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15,23,42,0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.panel h1,
+.panel h2 {
+  letter-spacing: -0.02em;
+}
+
+/* New light header styles */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+}
+.theme-dark .site-header {
+  background: rgba(10,10,11,0.82);
+  border-bottom-color: rgba(214,217,223,0.10);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+}
+
+.site-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.brand__logo { width: 26px; height: 26px; }
+.brand__name { color: #0f172a; font-weight: 700; letter-spacing: -0.01em; font-size: 16px; }
+.theme-dark .brand__name { color: #e5e7eb; }
+.header-actions { display:flex; align-items:center; gap:10px; }
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+}
+.site-nav a {
+  color: #334155;
+  text-decoration: none;
+}
+.site-nav a:hover { color: #0f172a; }
+
+/* Stack menus */
+.stack-menus {
+  max-width: 1000px;
+  margin: 20px auto 8px auto;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: 1fr; /* mobile-first */
+  gap: 12px;
+}
+.stack-menus .field { display: flex; flex-direction: column; gap: 8px; }
+.stack-menus label { color: #0f172a; font-size: 13px; font-weight: 700; letter-spacing: -0.01em; }
+.theme-dark .stack-menus label { color: #f3f4f6; }
+.tech-logo { height: 64px; display:flex; align-items:center; justify-content:center; }
+.tech-logo img { width: 56px; height: 56px; object-fit: contain; }
+
+
+.select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.stack-select {
+  appearance: none;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #ffffff;
+  border-radius: 12px;
+  height: 44px;
+  padding: 0 40px 0 14px;
+  color: #0f172a;
+  outline: none;
+  width: 100%;
+}
+.stack-select:focus { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.18); }
+.select-caret {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Simple dropdown menu light styles (non-shadcn) */
+.menu {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.menu__trigger {
+  height: 44px;
+  padding: 0 12px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(15,23,42,0.12);
+  border-radius: 10px;
+  width: 100%;
+}
+.theme-dark .menu__trigger {
+  /* Matte button with silver sheen */
+  background: linear-gradient(180deg, #121213 0%, #0c0c0d 100%);
+  color: #e5e7eb;
+  border-color: #2b2b2d;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 0 rgba(0,0,0,0);
+}
+.menu__content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,0.12);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 8px;
+  z-index: 20;
+  max-height: 260px;
+  overflow: auto;
+}
+.theme-dark .menu__content {
+  background: linear-gradient(180deg, #121213 0%, #0b0b0c 100%);
+  border-color: #2b2b2d;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.theme-dark .menu__label { color: #9aa3ad; }
+.theme-dark .menu__separator { background: rgba(255,255,255,0.06); }
+.theme-dark .menu__item { color: #d6d9df; }
+.theme-dark .menu__item:hover { background: #161617; }
+.theme-dark .menu__item.is-active {
+  background: linear-gradient(180deg, #19191a 0%, #141415 100%);
+  border: 1px solid #2f2f31;
+}
+
+/* Panel dark appearance for consistency */
+.theme-dark .panel {
+  background: linear-gradient(180deg, rgba(20,20,22,0.92), rgba(12,12,13,0.92));
+  border-color: #2b2b2d;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+  .site-header__inner { padding: 12px 16px; }
+  .brand__name { font-size: 18px; }
+  .stack-menus { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .site-header__inner { padding: 14px 20px; }
+  .brand__name { font-size: 19px; }
+}
+
+/* Buttons */
+.btn-primary {
+  height: 44px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  font-weight: 700;
+}
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-primary:active { transform: translateY(1px); }
+.theme-dark .btn-primary { border-color: #2b2b2d; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+
+/* Logos - floating row */
+.logos-row { display:none; }
+.logo-float { display:none; }
+.logo-float__img { display:none; }
+
+/* Row of logos aligned with the 4-column grid (3 selects + button) */
+.logos-under {
+  max-width: 1000px;
+  margin: 6px auto 24px auto;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: 1fr; /* mobile */
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .logos-under { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+}
+.menu__label { padding: 6px 8px; font-size: 12px; color: #64748b; }
+.menu__item { padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+.menu__item:hover { background: #f1f5f9; }
+.menu__separator { height: 1px; background: rgba(15,23,42,0.08); margin: 6px 4px; }
+.menu__item.is-active { background: #e2e8f0; font-weight: 600; }
+
+/* Floating particles */
+.particles-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgba(15,23,42,0.6);
+  box-shadow: 0 0 8px rgba(15,23,42,0.25);
+  transform: translate3d(var(--x, 0px), var(--y, 0px), 0);
+  animation: drift var(--dur, 12000ms) var(--easing, cubic-bezier(0.22, 1, 0.36, 1)) infinite alternate,
+             pulse var(--pdur, 2600ms) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0ms), 0ms;
+  will-change: transform, opacity;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(var(--x, 0px), var(--y, 0px), 0);
+  }
+  100% { transform: translate3d(calc(var(--x, 0px) + var(--dx, 50px)), calc(var(--y, 0px) + var(--dy, 30px)), 0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.45; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+  }
+}
