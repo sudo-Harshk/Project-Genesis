@@ -1,88 +1,88 @@
-# Project Genesis 🚀
+# Project Genesis
 
 An AI-powered project idea generator that creates unique, innovative project suggestions based on your chosen tech stack.
 
-## ✨ Features
+## Features
 
-### 🎯 **Smart Category System**
+###  **Smart Category System**
 - **8 Organized Category Sets** with 5 categories each (40 total categories)
 - **Intelligent Selection Algorithm** picks 4 categories from different sets
 - **Maximum Variety Guarantee** - no similar categories in the same generation
 - **Rotation Tracking** ensures different combinations across multiple generations
 
-### 🏭 **Industry & Persona Variety**
+###  **Industry & Persona Variety**
 - **4 Industry Categories** with 6 subcategories each
 - **4 User Persona Types** with 6 personas each
 - **4 Complexity Levels** for project scope variation
 - **Dynamic Selection** from different categories for each generation
 
-### 💾 **Smart Caching System**
+###  **Smart Caching System**
 - **Instant Response** for repeated tech stack selections
 - **Cost Optimization** reduces API calls
 - **"Generate New Ideas" Button** for fresh content when desired
 - **Cache Transparency** shows when ideas are from cache vs. fresh
 
-## 🎲 How the Category System Works
+##  How the Category System Works
 
 ### **Category Sets (8 sets × 5 categories = 40 total)**
 
-1. **🤖 AI & Machine Learning**
+1. AI & Machine Learning
    - AI-powered creative tools
    - Machine learning utilities
    - Natural language processing apps
    - Computer vision applications
    - Predictive analytics platforms
 
-2. **🎨 Creative & Media**
+2. Creative & Media
    - Creative content generation tools
    - Digital art and design tools
    - Music and audio applications
    - Video and multimedia tools
    - Creative coding platforms
 
-3. **💼 Business & Productivity**
+3. Business & Productivity
    - Financial technology solutions
    - Automation and workflow tools
    - Productivity enhancers
    - Project management platforms
    - Business intelligence tools
 
-4. **👥 Social & Community**
+4. Social & Community
    - Real-time collaboration platforms
    - Community and networking apps
    - Social impact tools
    - Event management systems
    - Peer-to-peer platforms
 
-5. **⚙️ Technology & Infrastructure**
+5. Technology & Infrastructure
    - IoT data visualization dashboards
    - Blockchain-based applications
    - Data analytics platforms
    - API management tools
    - DevOps automation platforms
 
-6. **🏥 Health & Wellness**
+6. Health & Wellness
    - Health and wellness apps
    - Mental health support tools
    - Fitness tracking platforms
    - Nutrition and diet apps
    - Telemedicine solutions
 
-7. **📚 Education & Learning**
+7. Education & Learning
    - Educational technology
    - Learning management systems
    - Skill assessment platforms
    - Interactive tutorials
    - Knowledge sharing tools
 
-8. **🎮 Gaming & Entertainment**
+8. Gaming & Entertainment
    - Gaming platforms
    - Interactive storytelling apps
    - Virtual reality experiences
    - Augmented reality tools
    - Social gaming platforms
 
-### **Selection Algorithm**
+### Selection Algorithm
 
 1. **Smart Picking**: Selects 4 categories from 4 different sets
 2. **Rotation System**: Starts from different set each time for variety
@@ -103,7 +103,7 @@ An AI-powered project idea generator that creates unique, innovative project sug
 - **Technical**: Full Stack Developer, DevOps Engineer, Security Specialist, System Administrator, Database Administrator, Cloud Architect
 - **End User**: Small Business Owner, Freelancer, Student, Educator, Healthcare Professional, Gamer
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -135,7 +135,7 @@ An AI-powered project idea generator that creates unique, innovative project sug
    npm run dev
    ```
 
-## 🎯 Usage
+##  Usage
 
 ### **Basic Workflow**
 1. Select your tech stack (Frontend, Backend, Database)
@@ -155,7 +155,7 @@ Click "Show Category System Info" to see:
 - Cache statistics
 - Current rotation state
 
-## 🔧 Technical Details
+##  Technical Details
 
 ### **Architecture**
 - **Frontend**: React 19 + TypeScript + Vite
@@ -175,7 +175,7 @@ Click "Show Category System Info" to see:
 - **Efficient Selection**: O(1) category set lookups
 - **Memory Management**: Configurable cache clearing
 
-## 🎨 Customization
+##  Customization
 
 ### **Adding New Categories**
 ```typescript
@@ -215,7 +215,7 @@ const complexityLevels = [
 ];
 ```
 
-## 🧪 Testing
+## Testing
 
 ### **Cache Testing**
 ```typescript
@@ -232,14 +232,14 @@ import { resetCategoryRotation } from './services/geminiService';
 resetCategoryRotation();
 ```
 
-## 📊 Monitoring & Analytics
+## Monitoring & Analytics
 
 ### **Console Logs**
-- ✅ Cache hits with tech stack info
-- 🆕 Fresh generation details
-- 🎯 Selected categories and focus areas
-- 🏭 Industry and persona selections
-- ⚡ Complexity level choices
+- Cache hits with tech stack info
+- Fresh generation details
+- Selected categories and focus areas
+- Industry and persona selections
+- Complexity level choices
 
 ### **Cache Statistics**
 - Number of cached tech stack combinations
@@ -247,7 +247,7 @@ resetCategoryRotation();
 - Category rotation index
 - Set distribution information
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 ### **Planned Features**
 - **Persistent Caching**: Local storage for browser persistence
@@ -262,7 +262,7 @@ resetCategoryRotation();
 - **Complexity Matching**: User skill level adaptation
 - **Market Analysis**: Project viability scoring
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -270,11 +270,11 @@ resetCategoryRotation();
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Google Gemini API for AI-powered idea generation
 - React team for the amazing framework
