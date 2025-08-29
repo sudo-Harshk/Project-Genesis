@@ -8,7 +8,9 @@ type StackMenusProps = {
   onBackendChange: (v: string) => void;
   onDatabaseChange: (v: string) => void;
   onGenerate?: () => void;
+  onGenerateNew?: () => void;
   isLoading?: boolean;
+  hasExistingIdeas?: boolean;
 };
 
 const FRONTEND_OPTS = [
@@ -77,7 +79,9 @@ const StackMenus: React.FC<StackMenusProps> = ({
   onBackendChange,
   onDatabaseChange,
   onGenerate,
+  onGenerateNew,
   isLoading = false,
+  hasExistingIdeas = false,
 }) => {
   return (
     <div className="stack-menus">
@@ -86,13 +90,25 @@ const StackMenus: React.FC<StackMenusProps> = ({
       <Menu label="Database" value={database} options={DATABASE_OPTS} onChange={onDatabaseChange} />
       <div className="field" style={{ alignSelf: 'end' }}>
         <label style={{ visibility: 'hidden' }}>Generate</label>
-        <button 
-          className="btn-primary" 
-          onClick={() => onGenerate?.()}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Generating...' : 'Generate'}
-        </button>
+        <div className="flex gap-2">
+          {hasExistingIdeas && onGenerateNew && (
+            <button 
+              className="btn-secondary" 
+              onClick={() => onGenerateNew()}
+              disabled={isLoading}
+              title="Generate fresh ideas for the same tech stack"
+            >
+              {isLoading ? 'Generating...' : 'New Ideas'}
+            </button>
+          )}
+          <button 
+            className="btn-primary" 
+            onClick={() => onGenerate?.()}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Generating...' : 'Generate'}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -8,15 +8,251 @@ export interface ProjectIdea {
   description: string;
 }
 
+// Cache to store generated ideas for each tech stack combination
+const ideaCache = new Map<string, ProjectIdea[]>();
+
+// Track category rotation to ensure variety across generations
+let categoryRotationIndex = 0;
+
+// Organized project categories into logical sets for maximum variety
+const categorySets = {
+  // Set 1: AI & Machine Learning
+  aiMl: [
+    'AI-powered creative tools',
+    'Machine learning utilities',
+    'Natural language processing apps',
+    'Computer vision applications',
+    'Predictive analytics platforms'
+  ],
+  
+  // Set 2: Creative & Media
+  creative: [
+    'Creative content generation tools',
+    'Digital art and design tools',
+    'Music and audio applications',
+    'Video and multimedia tools',
+    'Creative coding platforms'
+  ],
+  
+  // Set 3: Business & Productivity
+  business: [
+    'Financial technology solutions',
+    'Automation and workflow tools',
+    'Productivity enhancers',
+    'Project management platforms',
+    'Business intelligence tools'
+  ],
+  
+  // Set 4: Social & Community
+  social: [
+    'Real-time collaboration platforms',
+    'Community and networking apps',
+    'Social impact tools',
+    'Event management systems',
+    'Peer-to-peer platforms'
+  ],
+  
+  // Set 5: Technology & Infrastructure
+  tech: [
+    'IoT data visualization dashboards',
+    'Blockchain-based applications',
+    'Data analytics platforms',
+    'API management tools',
+    'DevOps automation platforms'
+  ],
+  
+  // Set 6: Health & Wellness
+  health: [
+    'Health and wellness apps',
+    'Mental health support tools',
+    'Fitness tracking platforms',
+    'Nutrition and diet apps',
+    'Telemedicine solutions'
+  ],
+  
+  // Set 7: Education & Learning
+  education: [
+    'Educational technology',
+    'Learning management systems',
+    'Skill assessment platforms',
+    'Interactive tutorials',
+    'Knowledge sharing tools'
+  ],
+  
+  // Set 8: Gaming & Entertainment
+  gaming: [
+    'Gaming platforms',
+    'Interactive storytelling apps',
+    'Virtual reality experiences',
+    'Augmented reality tools',
+    'Social gaming platforms'
+  ]
+};
+
+// Different project approaches to ensure variety
+const projectApproaches = [
+  'focus on user experience and modern design',
+  'emphasize scalability and performance',
+  'prioritize accessibility and inclusivity',
+  'highlight real-time capabilities',
+  'focus on data security and privacy',
+  'emphasize cross-platform compatibility',
+  'prioritize mobile-first design',
+  'highlight AI and machine learning integration',
+  'focus on collaboration and social features',
+  'emphasize automation and efficiency'
+];
+
+// Industry focus with subcategories for deeper variety
+const industryFocus = {
+  // Technology & Innovation
+  tech: ['FinTech', 'HealthTech', 'EdTech', 'PropTech', 'AgriTech', 'CleanTech'],
+  
+  // Traditional Industries
+  traditional: ['Manufacturing', 'Retail', 'Healthcare', 'Education', 'Finance', 'Real Estate'],
+  
+  // Creative & Media
+  creative: ['Gaming', 'Entertainment', 'Media', 'Publishing', 'Design', 'Music'],
+  
+  // Emerging Sectors
+  emerging: ['Sustainability', 'Space Tech', 'Biotech', 'Nanotech', 'Quantum Computing', 'Robotics']
+};
+
+// User personas organized by complexity and domain
+const userPersonas = {
+  // Professional Users
+  professional: [
+    'Startup Founder',
+    'Enterprise Developer',
+    'Product Manager',
+    'Business Analyst',
+    'Data Scientist',
+    'UX Designer'
+  ],
+  
+  // Creative Users
+  creative: [
+    'Content Creator',
+    'Digital Artist',
+    'Game Developer',
+    'Musician',
+    'Video Producer',
+    'Creative Director'
+  ],
+  
+  // Technical Users
+  technical: [
+    'Full Stack Developer',
+    'DevOps Engineer',
+    'Security Specialist',
+    'System Administrator',
+    'Database Administrator',
+    'Cloud Architect'
+  ],
+  
+  // End Users
+  endUser: [
+    'Small Business Owner',
+    'Freelancer',
+    'Student',
+    'Educator',
+    'Healthcare Professional',
+    'Gamer'
+  ]
+};
+
+// Project complexity levels for variety
+const complexityLevels = [
+  'MVP with core features',
+  'Full-featured application',
+  'Enterprise-grade solution',
+  'Prototype with potential for scaling'
+];
+
+/**
+ * Smart category selection algorithm
+ * Picks 4 categories from different sets to ensure maximum variety
+ */
+function selectDiverseCategories(): string[] {
+  const setKeys = Object.keys(categorySets);
+  const selectedCategories: string[] = [];
+  const usedSets = new Set<string>();
+  
+  // Start from rotation index to ensure variety across generations
+  let startIndex = categoryRotationIndex % setKeys.length;
+  
+  // Select 4 categories from different sets
+  for (let i = 0; i < 4; i++) {
+    const setIndex = (startIndex + i) % setKeys.length;
+    const setKey = setKeys[setIndex];
+    
+    if (!usedSets.has(setKey)) {
+      const set = categorySets[setKey as keyof typeof categorySets];
+      const randomCategory = set[Math.floor(Math.random() * set.length)];
+      selectedCategories.push(randomCategory);
+      usedSets.add(setKey);
+    }
+  }
+  
+  // Update rotation index for next generation
+  categoryRotationIndex = (categoryRotationIndex + 1) % setKeys.length;
+  
+  return selectedCategories;
+}
+
+/**
+ * Select diverse industry focus and user persona
+ */
+function selectDiverseFocus(): { industry: string; persona: string; complexity: string } {
+  // Select from different industry categories
+  const industryCategory = Object.keys(industryFocus)[Math.floor(Math.random() * Object.keys(industryFocus).length)];
+  const industrySubcategory = industryFocus[industryCategory as keyof typeof industryFocus][Math.floor(Math.random() * industryFocus[industryCategory as keyof typeof industryFocus].length)];
+  
+  // Select from different persona categories
+  const personaCategory = Object.keys(userPersonas)[Math.floor(Math.random() * Object.keys(userPersonas).length)];
+  const persona = userPersonas[personaCategory as keyof typeof userPersonas][Math.floor(Math.random() * userPersonas[personaCategory as keyof typeof userPersonas].length)];
+  
+  // Select complexity level
+  const complexity = complexityLevels[Math.floor(Math.random() * complexityLevels.length)];
+  
+  return { industry: industrySubcategory, persona, complexity };
+}
+
 export const generateProjectIdeas = async (
   frontend: string,
   backend: string,
   database: string
-): Promise<ProjectIdea[]> => {
+): Promise<{ ideas: ProjectIdea[]; fromCache: boolean }> => {
+  // Create a cache key for this tech stack combination
+  const cacheKey = `${frontend}|${backend}|${database}`;
+  
+  // Check if we have cached ideas for this combination
+  if (ideaCache.has(cacheKey)) {
+    console.log('✅ Returning cached ideas for:', cacheKey);
+    return { ideas: ideaCache.get(cacheKey)!, fromCache: true };
+  }
+
   try {
+    // Use smart selection algorithm for maximum variety
+    const selectedCategories = selectDiverseCategories();
+    const { industry, persona, complexity } = selectDiverseFocus();
+    const randomApproach = projectApproaches[Math.floor(Math.random() * projectApproaches.length)];
+    
+    // Add timestamp and random elements to ensure variety
+    const timestamp = Date.now();
+    const randomSeed = Math.floor(Math.random() * 10000);
+    
+    console.log('🎯 Selected categories:', selectedCategories);
+    console.log('🏭 Industry focus:', industry);
+    console.log('👤 Target persona:', persona);
+    console.log('⚡ Complexity level:', complexity);
+    
     const result = await genAI.models.generateContent({
       model: 'gemini-2.0-flash-001',
       contents: `Generate 3 unique and innovative project ideas (NOT generic ones like blog, ecommerce, portfolio) that would be perfect for a developer using ${frontend} for frontend, ${backend} for backend, and ${database} for database.
+
+Current timestamp: ${timestamp}
+Random seed: ${randomSeed}
 
 For each project idea, provide:
 1. A creative and unique title
@@ -27,6 +263,13 @@ Make sure the projects are:
 - Feasible with the selected tech stack
 - Interesting and engaging
 - Different from each other
+- ${randomApproach}
+- Focused on ${industry} industry
+- Designed for ${persona}
+- Built as ${complexity}
+
+Focus on these specific categories for variety:
+${selectedCategories.map(cat => `- ${cat}`).join('\n')}
 
 IMPORTANT: Respond ONLY with valid JSON in this exact format, no other text:
 [
@@ -47,19 +290,7 @@ IMPORTANT: Respond ONLY with valid JSON in this exact format, no other text:
   }
 ]
 
-Focus on unique ideas like:
-- AI-powered creative tools
-- Real-time collaboration platforms
-- IoT data visualization dashboards
-- Blockchain-based applications
-- Machine learning utilities
-- Social impact tools
-- Gaming platforms
-- Educational technology
-- Health and wellness apps
-- Environmental monitoring systems
-
-Avoid generic projects like blogs, ecommerce sites, or basic portfolios.`
+Avoid generic projects like blogs, ecommerce sites, or basic portfolios. Make each idea truly unique and different from typical examples.`
     });
     
     const text = result.text || '';
@@ -132,7 +363,11 @@ Avoid generic projects like blogs, ecommerce sites, or basic portfolios.`
     });
     
     console.log('Successfully parsed projects:', projectIdeas); // Debug log
-    return projectIdeas;
+    
+    // Cache the generated ideas
+    ideaCache.set(cacheKey, projectIdeas);
+    
+    return { ideas: projectIdeas, fromCache: false };
     
   } catch (error) {
     console.error('Error generating project ideas:', error);
@@ -144,4 +379,34 @@ Avoid generic projects like blogs, ecommerce sites, or basic portfolios.`
       throw new Error('Failed to generate project ideas. Please try again.');
     }
   }
+};
+
+// Function to clear cache (useful for testing or when user wants fresh ideas)
+export const clearIdeaCache = () => {
+  ideaCache.clear();
+  console.log('Idea cache cleared');
+};
+
+// Function to get cache statistics
+export const getCacheStats = () => {
+  return {
+    cachedStacks: ideaCache.size,
+    totalCachedIdeas: Array.from(ideaCache.values()).reduce((sum, ideas) => sum + ideas.length, 0)
+  };
+};
+
+// Function to get category selection statistics
+export const getCategoryStats = () => {
+  return {
+    totalSets: Object.keys(categorySets).length,
+    totalCategories: Object.values(categorySets).reduce((sum, set) => sum + set.length, 0),
+    rotationIndex: categoryRotationIndex,
+    categorySets: Object.keys(categorySets)
+  };
+};
+
+// Function to manually reset category rotation (for testing)
+export const resetCategoryRotation = () => {
+  categoryRotationIndex = 0;
+  console.log('Category rotation reset to 0');
 };

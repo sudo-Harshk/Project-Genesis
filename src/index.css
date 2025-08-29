@@ -240,6 +240,23 @@ body {
 .btn-primary:hover { filter: brightness(1.05); }
 .btn-primary:active { transform: translateY(1px); }
 
+.btn-secondary {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid #4b5563;
+  background: transparent;
+  color: #9ca3af;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover { 
+  background: rgba(75, 85, 99, 0.1);
+  color: #d1d5db;
+  border-color: #6b7280;
+}
+.btn-secondary:active { transform: translateY(1px); }
+
 /* Logos - floating row */
 .logos-row { display:none; }
 .logo-float { display:none; }
