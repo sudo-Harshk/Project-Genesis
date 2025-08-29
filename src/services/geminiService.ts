@@ -109,7 +109,27 @@ Avoid generic projects like blogs, ecommerce sites, or basic portfolios.`
         console.error(`Project ${i} missing required fields:`, project);
         throw new Error(`Project ${i + 1} is missing required fields (id, title, or description)`);
       }
+      
+      // Ensure each project has a valid ID, use index as fallback
+      if (!project.id || project.id.trim() === '') {
+        project.id = `project-${i + 1}`;
+      }
     }
+    
+    // Ensure unique IDs by adding index if duplicates exist
+    const seenIds = new Set<string>();
+    projectIdeas.forEach((project, index) => {
+      let uniqueId = project.id;
+      let counter = 1;
+      
+      while (seenIds.has(uniqueId)) {
+        uniqueId = `${project.id}-${counter}`;
+        counter++;
+      }
+      
+      seenIds.add(uniqueId);
+      project.id = uniqueId;
+    });
     
     console.log('Successfully parsed projects:', projectIdeas); // Debug log
     return projectIdeas;

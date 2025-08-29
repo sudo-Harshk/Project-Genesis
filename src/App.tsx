@@ -48,7 +48,15 @@ function App() {
       {/* Project Ideas Section */}
       {projectIdeas.length > 0 && (
         <section className="py-16 px-4">
-          <ProjectIdeas ideas={projectIdeas} />
+          <div className="section-header max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl mb-4">
+              Generated Project Ideas
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto">
+              Here are some amazing project ideas based on your selected tech stack. Click "Read More" to explore each idea in detail.
+            </p>
+          </div>
+          <ProjectIdeas ideas={projectIdeas} singleExpand={true} />
         </section>
       )}
       
