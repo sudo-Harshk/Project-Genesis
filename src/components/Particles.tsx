@@ -26,7 +26,7 @@ const Particles: React.FC<ParticlesProps> = ({ count = 80 }) => {
         ['--easing' as any]: easing,
         width: `${size}px`,
         height: `${size}px`,
-        background: 'rgba(2,6,23,0.65)'
+        background: 'rgba(214,217,223,0.65)'
       } as React.CSSProperties;
       return <span key={i} className="particle" style={style} />;
     });

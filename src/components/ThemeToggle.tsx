@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from 'react';
-
-const THEME_KEY = 'pg-theme';
+import React, { useEffect } from 'react';
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState<'light'|'dark'>(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem(THEME_KEY) : null;
-    return (saved === 'dark' || saved === 'light') ? (saved as 'light'|'dark') : 'light';
-  });
-
   useEffect(() => {
+    // Always set dark theme
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('theme-dark');
-    } else {
-      root.classList.remove('theme-dark');
-    }
-    localStorage.setItem(THEME_KEY, theme);
-  }, [theme]);
+    root.classList.add('theme-dark');
+    localStorage.setItem('pg-theme', 'dark');
+  }, []);
 
   return (
     <button
-      aria-label="Toggle theme"
+      aria-label="Dark theme active"
       className="menu__trigger"
       style={{ width: 90 }}
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      disabled
     >
-      {theme === 'light' ? 'Dark' : 'Light'}
+      Dark
     </button>
   );
 };

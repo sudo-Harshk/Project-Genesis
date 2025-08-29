@@ -1,5 +1,3 @@
-import ThemeToggle from './ThemeToggle';
-
 const Header = () => {
     return (
       <header className="site-header">
@@ -8,9 +6,6 @@ const Header = () => {
             <img className="brand__logo" src="/vite.svg" alt="Project Genesis" />
             <span className="brand__name">Project Genesis</span>
           </a>
-          <div className="header-actions">
-            <ThemeToggle />
-          </div>
         </div>
       </header>
     );
