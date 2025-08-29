@@ -5,7 +5,7 @@ import StackMenus from './components/StackMenus';
 import TechLogos from './components/TechLogos';
 import ProjectIdeas from './components/ProjectIdeas';
 import type { ProjectIdea } from './services/geminiService';
-import { clearIdeaCache, getCacheStats, getCategoryStats } from './services/geminiService';
+import { clearIdeaCache, getCacheStats } from './services/geminiService';
 
 function App() {
   const [frontend, setFrontend] = useState('React');
