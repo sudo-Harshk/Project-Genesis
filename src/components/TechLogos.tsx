@@ -13,7 +13,7 @@ const LOGO_URL: Record<string, string> = {
   Express: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
   NestJS: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg',
   Django: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
-  Flask: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-plain.svg',
+
   'Spring Boot': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
   Laravel: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
   'Go (Fiber)': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',

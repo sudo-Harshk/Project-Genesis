@@ -8,6 +8,7 @@ type StackMenusProps = {
   onBackendChange: (v: string) => void;
   onDatabaseChange: (v: string) => void;
   onGenerate?: () => void;
+  isLoading?: boolean;
 };
 
 const FRONTEND_OPTS = [
@@ -24,7 +25,7 @@ const BACKEND_OPTS = [
   'Express',
   'NestJS',
   'Django',
-  'Flask',
+
   'Spring Boot',
   'Laravel',
   'Go (Fiber)',
@@ -76,6 +77,7 @@ const StackMenus: React.FC<StackMenusProps> = ({
   onBackendChange,
   onDatabaseChange,
   onGenerate,
+  isLoading = false,
 }) => {
   return (
     <div className="stack-menus">
@@ -84,7 +86,13 @@ const StackMenus: React.FC<StackMenusProps> = ({
       <Menu label="Database" value={database} options={DATABASE_OPTS} onChange={onDatabaseChange} />
       <div className="field" style={{ alignSelf: 'end' }}>
         <label style={{ visibility: 'hidden' }}>Generate</label>
-        <button className="btn-primary" onClick={() => onGenerate?.()}>Generate</button>
+        <button 
+          className="btn-primary" 
+          onClick={() => onGenerate?.()}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Generating...' : 'Generate'}
+        </button>
       </div>
     </div>
   );

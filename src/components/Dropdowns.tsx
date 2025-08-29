@@ -20,7 +20,6 @@ const frontendOptions = [
 const backendOptions = [
   'Node.js',
   'Django',
-  'Flask',
   'Laravel',
   'Spring Boot',
   'Go (Fiber)'
