@@ -118,7 +118,7 @@ Avoid generic projects like blogs, ecommerce sites, or basic portfolios.`
     
     // Ensure unique IDs by adding index if duplicates exist
     const seenIds = new Set<string>();
-    projectIdeas.forEach((project, index) => {
+    projectIdeas.forEach((project) => {
       let uniqueId = project.id;
       let counter = 1;
       
