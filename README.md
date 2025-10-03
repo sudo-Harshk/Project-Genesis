@@ -1,4 +1,4 @@
-# Project Genesis 🚀
+# Project Genesis 
 
 An AI-powered project idea generator that creates unique, innovative project suggestions based on your chosen tech stack.
 
@@ -16,66 +16,66 @@ An AI-powered project idea generator that creates unique, innovative project sug
 - **4 Complexity Levels** for project scope variation
 - **Dynamic Selection** from different categories for each generation
 
-### 💾 **Smart Caching System**
+###  **Smart Caching System**
 - **Instant Response** for repeated tech stack selections
 - **Cost Optimization** reduces API calls
 - **"Generate New Ideas" Button** for fresh content when desired
 - **Cache Transparency** shows when ideas are from cache vs. fresh
 
-## 🎲 How the Category System Works
+##  How the Category System Works
 
 ### **Category Sets (8 sets × 5 categories = 40 total)**
 
-1. **🤖 AI & Machine Learning**
+1. AI & Machine Learning
    - AI-powered creative tools
    - Machine learning utilities
    - Natural language processing apps
    - Computer vision applications
    - Predictive analytics platforms
 
-2. **🎨 Creative & Media**
+2. Creative & Media
    - Creative content generation tools
    - Digital art and design tools
    - Music and audio applications
    - Video and multimedia tools
    - Creative coding platforms
 
-3. **💼 Business & Productivity**
+3. Business & Productivity
    - Financial technology solutions
    - Automation and workflow tools
    - Productivity enhancers
    - Project management platforms
    - Business intelligence tools
 
-4. **👥 Social & Community**
+4. Social & Community
    - Real-time collaboration platforms
    - Community and networking apps
    - Social impact tools
    - Event management systems
    - Peer-to-peer platforms
 
-5. **⚙️ Technology & Infrastructure**
+5. Technology & Infrastructure
    - IoT data visualization dashboards
    - Blockchain-based applications
    - Data analytics platforms
    - API management tools
    - DevOps automation platforms
 
-6. **🏥 Health & Wellness**
+6. Health & Wellness
    - Health and wellness apps
    - Mental health support tools
    - Fitness tracking platforms
    - Nutrition and diet apps
    - Telemedicine solutions
 
-7. **📚 Education & Learning**
+7. Education & Learning
    - Educational technology
    - Learning management systems
    - Skill assessment platforms
    - Interactive tutorials
    - Knowledge sharing tools
 
-8. **🎮 Gaming & Entertainment**
+8. Gaming & Entertainment
    - Gaming platforms
    - Interactive storytelling apps
    - Virtual reality experiences
@@ -103,7 +103,7 @@ An AI-powered project idea generator that creates unique, innovative project sug
 - **Technical**: Full Stack Developer, DevOps Engineer, Security Specialist, System Administrator, Database Administrator, Cloud Architect
 - **End User**: Small Business Owner, Freelancer, Student, Educator, Healthcare Professional, Gamer
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -138,7 +138,7 @@ An AI-powered project idea generator that creates unique, innovative project sug
    npm run dev
    ```
 
-## 🎯 Usage
+## Usage
 
 ### **Basic Workflow**
 1. Select your tech stack (Frontend, Backend, Database)
@@ -158,7 +158,7 @@ Click "Show Category System Info" to see:
 - Cache statistics
 - Current rotation state
 
-## 🔧 Technical Details
+##  Technical Details
 
 ### **Architecture**
 - **Frontend**: React 19 + TypeScript + Vite
@@ -177,9 +177,9 @@ Click "Show Category System Info" to see:
 - **Efficient Selection**: O(1) category set lookups
 - **Memory Management**: Configurable cache clearing
 
-## 🎨 Customization
+##  Customization
 
-### **Adding New Categories**
+### Adding New Categories
 ```typescript
 // Add to existing set
 categorySets.tech.push('New Tech Category');
@@ -194,7 +194,7 @@ categorySets.newDomain = [
 ];
 ```
 
-### **Modifying Selection Logic**
+### Modifying Selection Logic
 ```typescript
 // Change number of categories selected
 function selectDiverseCategories(): string[] {
@@ -205,7 +205,7 @@ function selectDiverseCategories(): string[] {
 }
 ```
 
-### **Adjusting Variety Factors**
+### Adjusting Variety Factors
 ```typescript
 // Add new complexity levels
 const complexityLevels = [
@@ -219,7 +219,7 @@ const complexityLevels = [
 
 ## Testing
 
-### **Cache Testing**
+### Cache Testing
 ```typescript
 // Check cache statistics
 import { getCacheStats, getCategoryStats } from './services/geminiService';
@@ -227,7 +227,7 @@ console.log('Cache:', getCacheStats());
 console.log('Categories:', getCategoryStats());
 ```
 
-### **Category Rotation Testing**
+### Category Rotation Testing
 ```typescript
 // Reset rotation for testing
 import { resetCategoryRotation } from './services/geminiService';
@@ -236,14 +236,14 @@ resetCategoryRotation();
 
 ## Monitoring & Analytics
 
-### **Console Logs**
+### Console Logs
 - Cache hits with tech stack info
 - Fresh generation details
 - Selected categories and focus areas
 - Industry and persona selections
 - Complexity level choices
 
-### **Cache Statistics**
+### Cache Statistics
 - Number of cached tech stack combinations
 - Total cached project ideas
 - Category rotation index
@@ -251,14 +251,14 @@ resetCategoryRotation();
 
 ## Future Enhancements
 
-### **Planned Features**
+### Planned Features
 - **Persistent Caching**: Local storage for browser persistence
 - **Category Preferences**: User-defined category weights
 - **Project History**: Track generated ideas over time
 - **Export Options**: Save ideas to various formats
 - **Collaboration**: Share and rate project ideas
 
-### **Advanced Algorithms**
+### Advanced Algorithms
 - **Machine Learning**: Learn user preferences over time
 - **Trend Integration**: Real-time industry trend analysis
 - **Complexity Matching**: User skill level adaptation
@@ -275,13 +275,6 @@ resetCategoryRotation();
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenRouter API for AI-powered idea generation
-- React team for the amazing framework
-- Tailwind CSS for the utility-first styling
-- Open source community for inspiration and tools
 
 ---
 
