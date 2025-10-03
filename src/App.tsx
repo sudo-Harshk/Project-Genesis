@@ -4,8 +4,8 @@ import { useState } from 'react';
 import StackMenus from './components/StackMenus';
 import TechLogos from './components/TechLogos';
 import ProjectIdeas from './components/ProjectIdeas';
-import type { ProjectIdea } from './services/geminiService';
-import { clearIdeaCache, getCacheStats } from './services/geminiService';
+import type { ProjectIdea } from './services/openrouterService';
+import { clearIdeaCache, getCacheStats } from './services/openrouterService';
 
 function App() {
   const [frontend, setFrontend] = useState('React');
@@ -22,8 +22,8 @@ function App() {
     setError(null);
     
     try {
-      const { generateProjectIdeas } = await import('./services/geminiService');
-      const result = await generateProjectIdeas(frontend, backend, database);
+  const { generateProjectIdeas } = await import('./services/openrouterService');
+  const result = await generateProjectIdeas(frontend, backend, database);
       setProjectIdeas(result.ideas);
       setIsFromCache(result.fromCache);
       
@@ -45,14 +45,14 @@ function App() {
     clearIdeaCache();
     
     // Log cache stats for debugging
-    const { getCacheStats } = await import('./services/geminiService');
+  const { getCacheStats } = await import('./services/openrouterService');
     console.log('Cache cleared. Current stats:', getCacheStats());
     
     setIsLoading(true);
     setError(null);
     
     try {
-      const { generateProjectIdeas } = await import('./services/geminiService');
+  const { generateProjectIdeas } = await import('./services/openrouterService');
       const result = await generateProjectIdeas(frontend, backend, database);
       setProjectIdeas(result.ideas);
       setIsFromCache(result.fromCache);
